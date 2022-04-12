@@ -1,0 +1,6 @@
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DB\bin\Debug\ShopOnline.DB.dacpac
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DB\bin\Debug\ShopOnline.DB.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DB\bin\Debug\ShopOnline.DB.pdb
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DB\obj\Debug\ShopOnline.DB.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DB\obj\Debug\ShopOnline.DB.pdb
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DB\obj\Debug\ShopOnline.DB.sqlproj.AssemblyReference.cache

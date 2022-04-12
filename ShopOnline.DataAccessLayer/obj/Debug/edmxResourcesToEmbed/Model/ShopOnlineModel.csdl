@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShopOnlineDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="ShopOnlineDBModel.FK__Users__RolesId__267ABA7A" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityContainer Name="ShopOnlineDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Users" EntityType="ShopOnlineDBModel.Users" />
+    <AssociationSet Name="FK__Users__RolesId__267ABA7A" Association="ShopOnlineDBModel.FK__Users__RolesId__267ABA7A">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="Sectors" EntityType="ShopOnlineDBModel.Sectors" />
+    <EntitySet Name="Products" EntityType="ShopOnlineDBModel.Products" />
+    <AssociationSet Name="FK__Products__Sector__2B3F6F97" Association="ShopOnlineDBModel.FK__Products__Sector__2B3F6F97">
+      <End Role="Sectors" EntitySet="Sectors" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <EntitySet Name="Purchases" EntityType="ShopOnlineDBModel.Purchases" />
+    <AssociationSet Name="FK__Purchases__Produ__31EC6D26" Association="ShopOnlineDBModel.FK__Purchases__Produ__31EC6D26">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Purchases" EntitySet="Purchases" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Purchases__UserI__32E0915F" Association="ShopOnlineDBModel.FK__Purchases__UserI__32E0915F">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Purchases" EntitySet="Purchases" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RolesId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Roles" Relationship="ShopOnlineDBModel.FK__Users__RolesId__267ABA7A" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="Purchases" Relationship="ShopOnlineDBModel.FK__Purchases__UserI__32E0915F" FromRole="Users" ToRole="Purchases" />
+  </EntityType>
+  <Association Name="FK__Users__RolesId__267ABA7A">
+    <End Type="ShopOnlineDBModel.Roles" Role="Roles" Multiplicity="1" />
+    <End Type="ShopOnlineDBModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RolesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Sectors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Sector" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Products" Relationship="ShopOnlineDBModel.FK__Products__Sector__2B3F6F97" FromRole="Sectors" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Brand" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cost" Type="Int32" Nullable="false" />
+    <Property Name="Sector" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sectors" Relationship="ShopOnlineDBModel.FK__Products__Sector__2B3F6F97" FromRole="Products" ToRole="Sectors" />
+    <NavigationProperty Name="Purchases" Relationship="ShopOnlineDBModel.FK__Purchases__Produ__31EC6D26" FromRole="Products" ToRole="Purchases" />
+  </EntityType>
+  <Association Name="FK__Products__Sector__2B3F6F97">
+    <End Type="ShopOnlineDBModel.Sectors" Role="Sectors" Multiplicity="1" />
+    <End Type="ShopOnlineDBModel.Products" Role="Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sectors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="Sector" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Purchases">
+    <Key>
+      <PropertyRef Name="PurchaseId" />
+    </Key>
+    <Property Name="PurchaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ShopDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Products" Relationship="ShopOnlineDBModel.FK__Purchases__Produ__31EC6D26" FromRole="Purchases" ToRole="Products" />
+    <NavigationProperty Name="Users" Relationship="ShopOnlineDBModel.FK__Purchases__UserI__32E0915F" FromRole="Purchases" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK__Purchases__Produ__31EC6D26">
+    <End Type="ShopOnlineDBModel.Products" Role="Products" Multiplicity="1" />
+    <End Type="ShopOnlineDBModel.Purchases" Role="Purchases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Purchases">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Purchases__UserI__32E0915F">
+    <End Type="ShopOnlineDBModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="ShopOnlineDBModel.Purchases" Role="Purchases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Purchases">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

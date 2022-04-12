@@ -1,0 +1,6 @@
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.Model\bin\Debug\ShopOnline.Model.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.Model\bin\Debug\ShopOnline.Model.pdb
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.Model\obj\Debug\ShopOnline.Model.csproj.CoreCompileInputs.cache
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.Model\obj\Debug\ShopOnline.Model.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.Model\obj\Debug\ShopOnline.Model.pdb
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.Model\obj\Debug\ShopOnline.Model.csproj.AssemblyReference.cache

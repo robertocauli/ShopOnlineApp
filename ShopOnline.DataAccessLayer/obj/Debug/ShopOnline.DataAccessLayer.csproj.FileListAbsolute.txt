@@ -1,0 +1,14 @@
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\bin\Debug\ShopOnline.DataAccessLayer.dll.config
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\bin\Debug\ShopOnline.DataAccessLayer.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\bin\Debug\ShopOnline.DataAccessLayer.pdb
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\bin\Debug\EntityFramework.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\bin\Debug\ShopOnline.Model.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\bin\Debug\ShopOnline.Model.pdb
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\bin\Debug\EntityFramework.xml
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\obj\Debug\ShopOnline.DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\obj\Debug\ShopOnline.DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\obj\Debug\ShopOnline.DataAccessLayer.csproj.CopyComplete
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\obj\Debug\ShopOnline.DataAccessLayer.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.DataAccessLayer\obj\Debug\ShopOnline.DataAccessLayer.pdb
