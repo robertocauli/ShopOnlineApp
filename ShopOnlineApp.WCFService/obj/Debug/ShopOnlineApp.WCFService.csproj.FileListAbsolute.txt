@@ -1,0 +1,7 @@
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnlineApp.WCFService\bin\ShopOnlineApp.WCFService.dll.config
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnlineApp.WCFService\bin\ShopOnlineApp.WCFService.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnlineApp.WCFService\bin\ShopOnlineApp.WCFService.pdb
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnlineApp.WCFService\obj\Debug\ShopOnlineApp.WCFService.csproj.AssemblyReference.cache
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnlineApp.WCFService\obj\Debug\ShopOnlineApp.WCFService.csproj.CoreCompileInputs.cache
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnlineApp.WCFService\obj\Debug\ShopOnlineApp.WCFService.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnlineApp.WCFService\obj\Debug\ShopOnlineApp.WCFService.pdb

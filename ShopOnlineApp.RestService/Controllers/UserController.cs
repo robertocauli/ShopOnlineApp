@@ -45,7 +45,7 @@ namespace ShopOnlineApp.RestService.Controllers
 
         [HttpPost]
         [Route("api/User/Login")]
-        public LoginResult Login(User user)
+        public LoginResult Login([FromBody] User user)
         {
             LoginResult loginResult = new LoginResult();
             BusinessLogic businessLogic = new BusinessLogic(userDAO, purchasenDAO, productDAO);
@@ -55,7 +55,7 @@ namespace ShopOnlineApp.RestService.Controllers
 
         [HttpPost]
         [Route("api/User/Registration")]
-        public RegistrationResult Registration(User user)
+        public RegistrationResult Registration([FromBody] User user)
         {
             RegistrationResult registrationResult = new RegistrationResult();
             BusinessLogic businessLogic = new BusinessLogic(userDAO,purchasenDAO,productDAO);

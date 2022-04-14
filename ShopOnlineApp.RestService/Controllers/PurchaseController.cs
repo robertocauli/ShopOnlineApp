@@ -45,7 +45,7 @@ namespace ShopOnlineApp.RestService.Controllers
 
         [HttpPost]
         [Route("api/Purchase/Shopping")]
-        ShoppingResult Shopping(ShoppingDTO shoppingDTO)
+        public ShoppingResult Shopping([FromBody]ShoppingDTO shoppingDTO)
         {
             ShoppingResult shoppingResult = new ShoppingResult();
             BusinessLogic businessLogic = new BusinessLogic(userDAO, purchasenDAO, productDAO);
@@ -55,7 +55,7 @@ namespace ShopOnlineApp.RestService.Controllers
 
         [HttpPost]
         [Route("api/Purchase/ReturnProduct")]
-        ResultReturn ReturnProduct(ReturnProductDTO returnProductDTO)
+        public ResultReturn ReturnProduct([FromBody]ReturnProductDTO returnProductDTO)
         {
             ResultReturn resultReturn = new ResultReturn();
             BusinessLogic businessLogic = new BusinessLogic(userDAO, purchasenDAO, productDAO);
@@ -65,7 +65,7 @@ namespace ShopOnlineApp.RestService.Controllers
 
         [HttpPost]
         [Route("api/Purchase/SearchPurchase")]
-        SearchPurchaseResult SearchPurchase(SearchPurchaseDTO searchPurchaseDTO)
+        public SearchPurchaseResult SearchPurchase([FromBody] SearchPurchaseDTO searchPurchaseDTO)
         {
             SearchPurchaseResult searchPurchaseResult = new SearchPurchaseResult();
             BusinessLogic businessLogic = new BusinessLogic(userDAO, purchasenDAO, productDAO);

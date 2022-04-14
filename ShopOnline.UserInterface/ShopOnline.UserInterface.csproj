@@ -74,6 +74,10 @@
       <Project>{C4A6DB3F-EB80-42B0-A7F1-3F96D1B68C6A}</Project>
       <Name>ShopOnline.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ShopOnlineApp.Proxy\ShopOnlineApp.Proxy.csproj">
+      <Project>{A69B135A-FD42-4F5A-B69F-70962DF1C416}</Project>
+      <Name>ShopOnlineApp.Proxy</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

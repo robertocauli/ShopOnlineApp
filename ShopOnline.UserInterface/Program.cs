@@ -1,6 +1,7 @@
 ﻿using ShopOnline.BL;
 using ShopOnline.DataAccessLayer;
 using ShopOnline.Model;
+using ShopOnlineApp.Proxy;
 using System;
 using System.Linq;
 
@@ -8,21 +9,29 @@ namespace ShopOnline.UserInterface
 {
     class Program
     {
-        public static IUserDAO userDAO;
-        public static IProductDAO productDAO;
-        public static IPurchaseDAO purchaseDAO;
+        //public static IUserDAO userDAO;
+        //public static IProductDAO productDAO;
+        //public static IPurchaseDAO purchaseDAO;
 
-        public static BusinessLogic businessLogic;
+        public static IUserProxy userProxy;
+        public static IProductProxy productProxy;
+        public static IPurchaseProxy purchaseProxy;
+
+        //public static BusinessLogic businessLogic;
 
         public static LoginResult loginResult;
         static void Main(string[] args)
         {
 
-            userDAO = new UserDAOForDB();
-            productDAO = new ProductDAOForDB();
-            purchaseDAO = new PurchaseDAOForDB();
+            //userDAO = new UserDAOForDB();
+            //productDAO = new ProductDAOForDB();
+            //purchaseDAO = new PurchaseDAOForDB();
 
-            businessLogic = new BusinessLogic(userDAO, purchaseDAO, productDAO);
+            userProxy = new UserRESTProxy();
+            productProxy = new ProductRESTProxy();
+            purchaseProxy = new PurchaseRESTProxy();
+
+            //businessLogic = new BusinessLogic(userDAO, purchaseDAO, productDAO);
 
             User userToLogin = new User();
 
@@ -79,7 +88,7 @@ namespace ShopOnline.UserInterface
 
                     RegistrationResult registrationResult = new RegistrationResult();
 
-                    registrationResult = businessLogic.Registration(newUser);
+                    registrationResult = userProxy.Registration(newUser);
 
                     if (registrationResult.isRegistered)
                     {
@@ -110,7 +119,7 @@ namespace ShopOnline.UserInterface
                         else
                         {
 
-                            loginResult = businessLogic.Login(userToLogin);
+                            loginResult = userProxy.Login(userToLogin);
 
                             if (loginResult.IsLogged && loginResult.UserLogged.FirstOrDefault().Roles.ToString() == "Administrator")
                             {
@@ -196,7 +205,7 @@ namespace ShopOnline.UserInterface
                                 } while (choiceForInsertCompleteDataForAdd);
 
 
-                                addResult = businessLogic.AddProduct(productToAdd);
+                                addResult = productProxy.AddProduct(productToAdd);
 
                                 if (addResult.isAdded)
                                 {
@@ -271,7 +280,7 @@ namespace ShopOnline.UserInterface
                                         }
                                     } while (choiceForInsertCompleteDataForUpdateNewProduct);
 
-                                    updateResult = businessLogic.UpdateProduct(oldProduct, newProduct);
+                                    updateResult = productProxy.UpdateProduct(oldProduct, newProduct);
 
                                     if (updateResult.isUpToDate)
                                     {
@@ -319,7 +328,7 @@ namespace ShopOnline.UserInterface
                                         }
                                     } while (choiceForReEnterDataToDelete);
 
-                                    deleteResult = businessLogic.DeleteProduct(productToDelete);
+                                    deleteResult = productProxy.DeleteProduct(productToDelete);
 
                                     if (deleteResult.isDeleted)
                                     {
@@ -352,7 +361,7 @@ namespace ShopOnline.UserInterface
                                     Console.Write("Product Name: ");
                                     productToPurchase.ProductName = Console.ReadLine();
 
-                                    shoppingResult = businessLogic.Shopping(productToPurchase, loginResult.UserLogged.FirstOrDefault().UserId);
+                                    shoppingResult = purchaseProxy.Shopping(productToPurchase, loginResult.UserLogged.FirstOrDefault().UserId);
 
                                     if (shoppingResult.isPurchase && !shoppingResult.productDoesNotExist)
                                     {
@@ -384,7 +393,7 @@ namespace ShopOnline.UserInterface
                                     Console.Write("Product Name: ");
                                     productForReturn.ProductName = Console.ReadLine();
 
-                                    resultReturn = businessLogic.ReturnProduct(productForReturn, loginResult.UserLogged.FirstOrDefault().UserId);
+                                    resultReturn = purchaseProxy.ReturnProduct(productForReturn, loginResult.UserLogged.FirstOrDefault().UserId);
 
                                     if (resultReturn.isSuccessful && resultReturn.isAvailable)
                                     {
@@ -479,7 +488,7 @@ namespace ShopOnline.UserInterface
                                     Console.Write("Product Name: ");
                                     productToPurchase.ProductName = Console.ReadLine();
 
-                                    shoppingResult = businessLogic.Shopping(productToPurchase, loginResult.UserLogged.FirstOrDefault().UserId);
+                                    shoppingResult = purchaseProxy.Shopping(productToPurchase, loginResult.UserLogged.FirstOrDefault().UserId);
 
                                     if (shoppingResult.isPurchase && !shoppingResult.productDoesNotExist)
                                     {
@@ -511,7 +520,7 @@ namespace ShopOnline.UserInterface
                                     Console.Write("Product Name: ");
                                     productForReturn.ProductName = Console.ReadLine();
 
-                                    resultReturn = businessLogic.ReturnProduct(productForReturn, loginResult.UserLogged.FirstOrDefault().UserId);
+                                    resultReturn = purchaseProxy.ReturnProduct(productForReturn, loginResult.UserLogged.FirstOrDefault().UserId);
 
                                     if (resultReturn.isSuccessful && resultReturn.isAvailable)
                                     {
@@ -591,9 +600,8 @@ namespace ShopOnline.UserInterface
             productToSearchForPurchase.Brand = Console.ReadLine();
             productToSearchForPurchase.Sectors = InsertSector(productToSearchForPurchase).Sectors;
 
-
             Console.WriteLine("");
-            searchResultForPurchase = businessLogic.SearchProducts(productToSearchForPurchase);
+            searchResultForPurchase = productProxy.SearchProducts(productToSearchForPurchase);
 
             if (searchResultForPurchase.isFound)
             {
@@ -625,7 +633,7 @@ namespace ShopOnline.UserInterface
             string answerFilterPurOrRet = Console.ReadLine();
             if (string.Equals(answerFilterPurOrRet, "Pur", StringComparison.InvariantCultureIgnoreCase))
             {
-                searchPurchaseResult = businessLogic.SearchPurchase(productForFilter, userForFilter, !returnOrNot);
+                searchPurchaseResult = purchaseProxy.SearchPurchase(productForFilter, userForFilter, !returnOrNot);
 
                 foreach (var s in searchPurchaseResult.PurchaseList)
                 {
@@ -634,7 +642,7 @@ namespace ShopOnline.UserInterface
             }
             else if (string.Equals(answerFilterPurOrRet, "Ret", StringComparison.InvariantCultureIgnoreCase))
             {
-                searchPurchaseResult = businessLogic.SearchPurchase(productForFilter, userForFilter, returnOrNot);
+                searchPurchaseResult = purchaseProxy.SearchPurchase(productForFilter, userForFilter, returnOrNot);
 
                 foreach (var s in searchPurchaseResult.PurchaseList)
                 {

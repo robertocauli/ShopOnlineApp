@@ -225,7 +225,7 @@ namespace ShopOnline.BL
             List<Product> products = _productDAO.GetProducts(product);
             List<User> users = _userDAO.GetUsers(user);
             Purchase resultPurchase = new Purchase();
-            List<Purchase> resultList = new List<Purchase>();
+            List<Purchase> resultPurchaseList = new List<Purchase>();
             SearchPurchaseResult searchPurchaseResult = new SearchPurchaseResult();
             List<SearchPurchaseResult> searchPurchaseResultsList = new List<SearchPurchaseResult>();
             List<Purchase> purchasesByProductAndUserFilter = new List<Purchase>();
@@ -244,11 +244,11 @@ namespace ShopOnline.BL
                         UserId = u.UserId
                     };
                     purchasesByProductAndUserFilter = _purchaseDAO.GetPurchases(purchase)?.Distinct().ToList();
-                    resultList.AddRange(returnOrNot ? purchasesByProductAndUserFilter.Where(purchases => purchases.ReturnDate > purchases.ShopDate).ToList() : purchasesByProductAndUserFilter.Where(purchases => purchases.ReturnDate == null).ToList());
+                    resultPurchaseList.AddRange(returnOrNot ? purchasesByProductAndUserFilter.Where(purchases => purchases.ReturnDate > purchases.ShopDate).ToList() : purchasesByProductAndUserFilter.Where(purchases => purchases.ReturnDate == null).ToList());
                 }
             }
 
-            foreach (var r in resultList)
+            foreach (var r in resultPurchaseList)
             {
                 Product productByResultList = new Product()
                 {
@@ -257,22 +257,25 @@ namespace ShopOnline.BL
                 productList.Add(_productDAO.GetProducts(productByResultList).FirstOrDefault());
             }
 
-            foreach (var r in resultList)
+            foreach (var r in resultPurchaseList)
             {
                 foreach (var p in productList)
                 {
-                    SearchPurchaseResult purchaseInList = new SearchPurchaseResult()
+                    if(r.ProductId == p.ProductId)
                     {
-                        ProductName = p.ProductName,
-                        Brand = p.Brand,
-                        Cost = p.Cost,
-                        Sector = p.Sectors,
-                        ShopDate = (DateTime)r.ShopDate
-                    };
-                    if (returnOrNot)
-                        purchaseInList.ReturnDate = (DateTime)r.ReturnDate;
+                        SearchPurchaseResult purchaseInList = new SearchPurchaseResult()
+                        {
+                            ProductName = p.ProductName,
+                            Brand = p.Brand,
+                            Cost = p.Cost,
+                            Sector = p.Sectors,
+                            ShopDate = (DateTime)r.ShopDate
+                        };
+                        if (returnOrNot)
+                            purchaseInList.ReturnDate = (DateTime)r.ReturnDate;
 
-                    searchPurchaseResultsList.Add(purchaseInList);
+                        searchPurchaseResultsList.Add(purchaseInList);
+                    }
                 }
             }
 

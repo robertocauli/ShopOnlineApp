@@ -45,7 +45,7 @@ namespace ShopOnlineApp.RestService.Controllers
 
         [HttpPost]
         [Route("api/Product/SearchProduct")]
-        public SearchResult SearchProducts(Product product)
+        public SearchResult SearchProducts([FromBody] Product product)
         {
             SearchResult searchResult = new SearchResult();
             BusinessLogic businessLogic = new BusinessLogic(userDAO,purchasenDAO,productDAO);
@@ -55,7 +55,7 @@ namespace ShopOnlineApp.RestService.Controllers
 
         [HttpPost]
         [Route("api/Product/AddProduct")]
-        public AddResult AddProduct(Product product)
+        public AddResult AddProduct([FromBody] Product product)
         {
             AddResult addResult = new AddResult();
             BusinessLogic businessLogic = new BusinessLogic(userDAO,purchasenDAO,productDAO);
@@ -65,7 +65,7 @@ namespace ShopOnlineApp.RestService.Controllers
 
         [HttpPost]
         [Route("api/Product/UpdateProduct")]
-        public UpdateResult UpdateProduct(UpdateProductDTO updateProduct)
+        public UpdateResult UpdateProduct([FromBody] UpdateProductDTO updateProduct)
         {
             UpdateResult updateResult = new UpdateResult();
             BusinessLogic businessLogic = new BusinessLogic(userDAO, purchasenDAO, productDAO);
@@ -75,14 +75,12 @@ namespace ShopOnlineApp.RestService.Controllers
 
         [HttpPost]
         [Route("api/Product/DeleteProduct")]
-        DeleteResult DeleteProduct(Product product)
+        DeleteResult DeleteProduct([FromBody] Product product)
         {
             DeleteResult deleteResult = new DeleteResult();
             BusinessLogic businessLogic = new BusinessLogic(userDAO, purchasenDAO, productDAO);
             deleteResult = businessLogic.DeleteProduct(product);
             return deleteResult;
         }
-
-
     }
 }

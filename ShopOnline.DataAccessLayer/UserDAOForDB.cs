@@ -46,14 +46,15 @@ namespace ShopOnline.DataAccessLayer
             {
                 using (var context = new ShopOnlineDBEntities())
                 {
-                    userList = context.Users.Where(u => (string.IsNullOrEmpty(userToSearch.Username) || u.Username == userToSearch.Username)).ToList();
+                    userList = context.Users.Where(u => (string.IsNullOrEmpty(userToSearch.Username) || u.Username == userToSearch.Username)&&
+                    (string.IsNullOrEmpty(userToSearch.Password) || u.Password == userToSearch.Password)).ToList();
                 }
             }
             else
             {
                 using (var context = new ShopOnlineDBEntities())
                 {
-                    userList = context.Users.Where(u => (string.IsNullOrEmpty(userToSearch.Username) || u.Username == userToSearch.Username) ||
+                    userList = context.Users.Where(u => (string.IsNullOrEmpty(userToSearch.Username) || u.Username == userToSearch.Username) &&
                     (userToSearch.UserId == 0 || u.UserId == userToSearch.UserId))
                         .ToList();
                 }

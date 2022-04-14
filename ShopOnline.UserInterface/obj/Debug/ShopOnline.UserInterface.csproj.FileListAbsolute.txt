@@ -17,3 +17,10 @@ C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.UserInterface\obj\D
 C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.UserInterface\obj\Debug\ShopOnline.UserInterface.csproj.CopyComplete
 C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.UserInterface\obj\Debug\ShopOnline.UserInterface.exe
 C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.UserInterface\obj\Debug\ShopOnline.UserInterface.pdb
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.UserInterface\bin\Debug\ShopOnlineApp.Proxy.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.UserInterface\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.UserInterface\bin\Debug\Newtonsoft.Json.dll
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.UserInterface\bin\Debug\ShopOnlineApp.Proxy.pdb
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.UserInterface\bin\Debug\ShopOnlineApp.Proxy.dll.config
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.UserInterface\bin\Debug\Newtonsoft.Json.xml
+C:\Users\roberto.cauli\source\repos\ShopOnlineApp\ShopOnline.UserInterface\obj\Debug\ShopOnline.UserInterface.exe.config
